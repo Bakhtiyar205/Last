@@ -1,0 +1,40 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+    <div class="m-sm-5 p-2 p-sm-5 border">
+        @if (Model.Result != null)
+        {
+            if (Model.Result.Contains("\"ResultCode\":-1"))
+            {
+                <div class="text-danger">
+                    @Model.Result
+                </div>
+            }
+            else
+            {
+                <div class="text-success" style="overflow:auto">
+                    @Model.Result
+                </div>
+            }
+
+        }
+        <form asp-controller="Home" asp-action="Login" method="post">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" asp-for="Name" name="name" placeholder="User Email">
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">User Password</label>
+                <input type="password" class="form-control" id="exampleFormControlInput1" asp-for="Password" name="password" placeholder="User Password">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-light">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
